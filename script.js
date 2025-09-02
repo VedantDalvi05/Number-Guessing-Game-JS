@@ -9,6 +9,7 @@ const gameVars = {
 
 // --- DOM Elements ---
 const playBtn = document.querySelector("#playBtn")
+const submitBtn = document.querySelector("#submitBtn")
 const attemptsEl = document.querySelector("#attempts")
 const messageEl = document.querySelector("#message")
 const guessEl = document.querySelector("#guess")
@@ -32,7 +33,7 @@ function resetGame() {
   guessEl.disabled = true
   gameEl.style.display = "none"
   playBtn.disabled = false
-  playBtn.style.display = "inline-block"
+  playBtn.style.class = "inline-block"
 }
 
 // --- Game Logic ---
@@ -44,6 +45,10 @@ function startGame() {
   guessEl.disabled = false
   playBtn.disabled = true
   playBtn.style.display = "none"
+  guessEl.style.display = "inline-block"
+  guessEl.value = ""
+  submitBtn.style.display = "flex"
+  attemptsEl.style.display = "block"
   attemptsEl.textContent = `Attempts: ${gameVars.attempts}`
   messageEl.textContent = `Guess any number between ${gameVars.min} and ${gameVars.max}`
 }
@@ -73,6 +78,10 @@ function sendGuess() {
     messageEl.textContent = `Congratulations! The correct answer is ${gameVars.ans}. It took you ${gameVars.attempts} attempts.`
     gameVars.running = false
     guessEl.disabled = true
+    guessEl.style.display = "none"
+    submitBtn.disabled = true
+    submitBtn.style.display = "none"
+    attemptsEl.style.display = "none"
     playBtn.disabled = false
     playBtn.style.display = "inline-block"
   }
@@ -100,3 +109,5 @@ resetGame()
 `------------------------------------._
 `------------------------------------._
 */
+
+// Improved by @Rafacv23
