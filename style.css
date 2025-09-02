@@ -1,1 +1,110 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* DEFAULT TAGS */
+html {
+  height: 100vh;
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #ebd3a1;
+  color: #413f3f;
+}
+
+input {
+  max-width: 15rem;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid #413f3f;
+  color: #413f3f;
+  padding: 0.25rem;
+  outline: none;
+}
+
+h2 {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* BUTTONS */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: block;
+}
+
+.user-input button {
+  background-color: #69b62b;
+  color: white;
+}
+
+.restart {
+  background-color: #d3472e;
+  color: white;
+  margin: 1.5rem auto;
+}
+
+/* FORM */
+.heading {
+  text-align: center;
+  padding: 1.5rem;
+  text-transform: uppercase;
+  font-size: 2.25rem;
+}
+
+.user-input {
+  max-width: fit-content;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* OUTPUTS */
+.output {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.output.correct {
+  color: #68b32c;
+}
+
+.output.error {
+  color: #d3472e;
+}
+
+.container {
+  border: 2px solid #636161;
+  border-radius: 12px;
+  background-color: #f3e1b9;
+  width: 25rem;
+  height: 10rem;
+  overflow: auto;
+  margin: 1.5rem auto;
+}
+
+.attempts {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.attempts-history {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  color: #636161;
+}

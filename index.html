@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Number Guessing Game</title>
+  </head>
+  <body>
+    <h1 class="heading"></h1>
 
-    <script src="script.js"></script>
-</body>
+    <!-- form for user input -->
+    <form class="user-input">
+      <label for="userNumber">Insert your number:</label>
+      <input type="number" min="1" name="userNumber" id="userNumber" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- output sentences -->
+    <p class="output"></p>
+
+    <!-- number guessing history -->
+    <div class="container">
+      <div>
+        <h2>Here's all your past attempts</h2>
+        <p class="attempts">Number of attempts:</p>
+      </div>
+      <ul class="attempts-history"></ul>
+    </div>
+
+    <!-- restarts the game -->
+    <button class="restart">Restart game</button>
+    <script src="script.js" type="module"></script>
+  </body>
 </html>
