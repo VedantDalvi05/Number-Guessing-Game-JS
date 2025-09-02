@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(41, 41, 41);
+   
+}
+
+.btn{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+#otp{
+   
+    cursor: pointer;
+    border-color:rgb(169, 133, 246) ;
+    border-radius:5px;
+    font-size: 3rem;
+    color: rgb(169, 133, 246);
+    background-color: rgba(61, 12, 166, 0.805);
+}
+
+.labels{
+
+    font-size: 2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+}
