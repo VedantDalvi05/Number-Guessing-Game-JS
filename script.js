@@ -48,6 +48,7 @@ function startGame() {
   guessEl.style.display = "inline-block"
   guessEl.value = ""
   submitBtn.style.display = "flex"
+  submitBtn.disabled = false
   attemptsEl.style.display = "block"
   attemptsEl.textContent = `Attempts: ${gameVars.attempts}`
   messageEl.textContent = `Guess any number between ${gameVars.min} and ${gameVars.max}`
@@ -72,8 +73,10 @@ function sendGuess() {
   attemptsEl.textContent = `Attempts: ${gameVars.attempts}`
   if (gameVars.ans < guess) {
     messageEl.textContent = "Too High, try again!"
+    guessEl.value = ""
   } else if (gameVars.ans > guess) {
     messageEl.textContent = "Too Low, try again!"
+    guessEl.value = ""
   } else {
     messageEl.textContent = `Congratulations! The correct answer is ${gameVars.ans}. It took you ${gameVars.attempts} attempts.`
     gameVars.running = false
