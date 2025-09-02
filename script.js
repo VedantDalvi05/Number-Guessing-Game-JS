@@ -1,53 +1,93 @@
-const min=1;
-const max=100;
-
-const ans= Math.floor(Math.random() * (max-min+1))+min;
-
-let attempts=0;
-let guess;
-let running =true;
-
-
-
-while(running){
-guess=Number(window.prompt(`Guess any number between ${min} and ${max}`));
-
-if(isNaN(guess)){
-    window.alert("Please enter a valid number");
-
-}
-else if(guess<min){
-    window.alert(`Please enter a number greater than ${min}`);
+// --- Game State ---
+const gameVars = {
+  min: 1,
+  max: 100,
+  ans: null,
+  attempts: 0,
+  running: false,
 }
 
-else if(guess>max){
-    window.alert(`Please enter a number smaller than ${max}`);
-    
-}
-else{
-    attempts++;
-    if(ans<guess){
-    window.alert(`Too High, try againn!`);
-        
-    }
-    else if(ans>guess){
-    window.alert(`Too Low, try again !`);
-        
-    }
-    else{
-    window.alert(`Congratulations !!, The correct answer is ${ans} , It took you ${attempts} attempts to guess it correctly`);
+// --- DOM Elements ---
+const playBtn = document.querySelector("#playBtn")
+const attemptsEl = document.querySelector("#attempts")
+const messageEl = document.querySelector("#message")
+const guessEl = document.querySelector("#guess")
+const gameEl = document.querySelector("#game")
 
-    running=false;
-        
-    }
-    }
+// --- Utility Functions ---
+function generateAnswer() {
+  const answer =
+    Math.floor(Math.random() * (gameVars.max - gameVars.min + 1)) + gameVars.min
+  console.log("Answer:", answer)
+  return answer
 }
 
+function resetGame() {
+  gameVars.ans = generateAnswer()
+  gameVars.attempts = 0
+  gameVars.running = false
+  guessEl.value = ""
+  attemptsEl.textContent = ""
+  messageEl.textContent = ""
+  guessEl.disabled = true
+  gameEl.style.display = "none"
+  playBtn.disabled = false
+  playBtn.style.display = "inline-block"
+}
 
+// --- Game Logic ---
+function startGame() {
+  gameVars.ans = generateAnswer()
+  gameVars.attempts = 0
+  gameVars.running = true
+  gameEl.style.display = "block"
+  guessEl.disabled = false
+  playBtn.disabled = true
+  playBtn.style.display = "none"
+  attemptsEl.textContent = `Attempts: ${gameVars.attempts}`
+  messageEl.textContent = `Guess any number between ${gameVars.min} and ${gameVars.max}`
+}
 
+function sendGuess() {
+  if (!gameVars.running) return
+  const guess = Number(guessEl.value)
+  if (isNaN(guess)) {
+    messageEl.textContent = "Please enter a valid number"
+    return
+  }
+  if (guess < gameVars.min) {
+    messageEl.textContent = `Please enter a number greater than ${gameVars.min}`
+    return
+  }
+  if (guess > gameVars.max) {
+    messageEl.textContent = `Please enter a number smaller than ${gameVars.max}`
+    return
+  }
+  gameVars.attempts++
+  attemptsEl.textContent = `Attempts: ${gameVars.attempts}`
+  if (gameVars.ans < guess) {
+    messageEl.textContent = "Too High, try again!"
+  } else if (gameVars.ans > guess) {
+    messageEl.textContent = "Too Low, try again!"
+  } else {
+    messageEl.textContent = `Congratulations! The correct answer is ${gameVars.ans}. It took you ${gameVars.attempts} attempts.`
+    gameVars.running = false
+    guessEl.disabled = true
+    playBtn.disabled = false
+    playBtn.style.display = "inline-block"
+  }
+}
 
+// --- Event Listeners ---
+gameEl.addEventListener("submit", function (e) {
+  e.preventDefault()
+  sendGuess()
+})
 
+playBtn.addEventListener("click", startGame)
 
+// --- Initial State ---
+resetGame()
 
 /* '------------------------------------._
 '------------------------------------._
@@ -60,5 +100,3 @@ else{
 `------------------------------------._
 `------------------------------------._
 */
-
-
